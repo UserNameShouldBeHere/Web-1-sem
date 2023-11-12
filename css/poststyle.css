@@ -26,6 +26,7 @@
 }
 
 .post-tags > a {
+    text-decoration: none;
     color: #2623df;
     border: 1px solid #2623df;
     padding: 2px 13px;
