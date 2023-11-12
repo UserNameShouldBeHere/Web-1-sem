@@ -1,0 +1,10 @@
+@import "commonstyle.css";
+
+.profile {
+    color: var(--main-orange);
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+}
