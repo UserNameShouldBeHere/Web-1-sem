@@ -1,0 +1,141 @@
+/* Content */
+.underlined {
+    border-bottom: 2px solid #6d6d6d;
+}
+
+.hot-btn {
+    color: #fd8523;
+}
+
+.hot-btn:hover {
+    color: #d47221;
+}
+
+.poststype > input:checked + label {
+    color: #f5f5f5;
+    background-color: #ffa332;
+    border-radius: 6px;
+}
+
+.poststype > label {
+    padding: 6px 10px;
+    display: inline-block;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+}
+
+.poststype > label:hover {
+    color: #6d6d6d;
+}
+
+.post {
+    background-color: #fff;
+    padding: 15px;
+    -webkit-box-shadow: 0px 0px 13px -3px;
+            box-shadow: 0px 0px 13px -3px;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+}
+
+.post-text > h4 {
+    padding: 4px 0px 8px 0px;
+    border-bottom: 3px dashed black;
+}
+
+.post-text > textarea {
+    overflow: auto;
+    resize: none;
+    border: none;
+}
+
+.post-tags {
+    display: inline-block;
+}
+
+.post-tags > a {
+    color: #2623df;
+    border: 1px solid #2623df;
+    padding: 2px 13px;
+    margin-right: 6px;
+    font-size: 12px;
+}
+
+.post-links > a {
+    color: #fd8523;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pagenumber > input:checked + label {
+    /* color: #f5f5f5;
+    background-color: #ffa332; */
+    border-bottom: 4px solid #ffa332;
+}
+
+.pagenumber > label {
+    /* border: 1px solid #727272; */
+    padding: 3px 12px;
+    display: inline-block;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+}
+
+.pagenumber > label:hover {
+    color: #868686;
+}
+
+.sidebar {
+    background-color: #fff;
+    padding: 15px;
+    -webkit-box-shadow: 0px 0px 13px -3px;
+            box-shadow: 0px 0px 13px -3px;
+}
+
+.sidebar > h4 {
+    text-align: center;
+    color: #fd8523;
+}
+
+.sidebar > ul {
+    padding: 0;
+}
+
+.sidebar > ul > li > a {
+    text-decoration: none;
+}
+
+.popular-tags > li {
+    display: inline-block;
+    margin: 10px 10px;
+}
+
+.popular-tags > li > a {
+    color: #2623df;
+    border: 1px solid #2623df;
+    padding: 2px 13px;
+}
+
+.members {
+    list-style-type: none;
+}
+
+.members > li {
+    margin-bottom: 5px;
+}
+/* /Content */
+
+/* Footer */
+.contacts {
+    list-style-type: none;
+}
+
+.contacts > li {
+    margin-bottom: 8px;
+}
+/* /Footer */
