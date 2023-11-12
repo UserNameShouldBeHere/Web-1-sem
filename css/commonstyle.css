@@ -3,6 +3,17 @@
     --dark-orange: #d47221;
 }
 
+.btn-submit {
+    background-color: var(--main-orange);
+    color: #f5f5f5;
+    border: none;
+    border-radius: 6px;
+}
+
+.btn-submit:hover {
+    background-color: var(--dark-orange);
+}
+
 /* Header */
 .underlined {
     border-bottom: 2px solid #6d6d6d;
