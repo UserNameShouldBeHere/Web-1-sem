@@ -11,6 +11,10 @@ body {
     overflow-x: hidden;
 }
 
+.search {
+    width: 400px;
+}
+
 .btn-submit {
     background-color: var(--main-orange);
     color: #f5f5f5;
