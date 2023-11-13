@@ -1,0 +1,5 @@
+@import "commonstyle.css";
+
+.login {
+    color: var(--main-orange);
+}
