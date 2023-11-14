@@ -15,15 +15,16 @@
     <div class="mt-3 row">
         <!-- Posts -->
         <div class="col-md-9">
+            {% for post in posts %}
             <div class="pl-3 pt-3 post row container-fluid">
                 <div class="col-auto">
                     <img class="profile-picture" src="{% static 'img/profile_picture_tmp.svg' %}">
                 </div>
                 <div class="col">
                     <div class="post-text">
-                        <h4 class="text-center mb-4">Title</h4>
+                        <h4 class="text-center mb-4">{{ post.title }}</h4>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa. Tincidunt dui ut ornare lectus sit amet est placerat in. In metus vulputate eu scelerisque felis imperdiet proin fermentum. Nunc aliquet bibendum enim facilisis gravida neque convallis a
+                            {{ post.text }}
                         </p>
                     </div>
                     <div class="post-additions">
@@ -42,36 +43,12 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
         <!-- /Posts -->
 
         <!-- Sidebar -->
-        <aside class="col-sm-3">
-            <div class="mb-4 sidebar">
-                <h4 class="mb-3">Popular tags</h4>
-                <ul class="popular-tags">
-                    <li><a href="#">Perl</a></li>
-                    <li><a href="#">C++</a></li>
-                    <li><a href="#">Python</a></li>
-                    <li><a href="#">Go</a></li>
-                    <li><a href="#">Rust</a></li>
-                    <li><a href="#">C#</a></li>
-                    <li><a href="#">Java</a></li>
-                    <li><a href="#">SQL</a></li>
-                    <li><a href="#">Kotlin</a></li>
-                </ul>
-            </div>
-
-            <div class="mb-4 sidebar">
-                <h4 class="mb-3">Best members</h4>
-                <ul class="members">
-                    <li><a href="#">Nagibator228</a></li>
-                    <li><a href="#">UltraMegaCringe</a></li>
-                    <li><a href="#">Abobus</a></li>
-                    <li><a href="#">Aristotel</a></li>
-                </ul>
-            </div>
-        </aside>
+        {% include 'components/sidebar.html' %}
         <!-- /Sidebar -->
     </div>
 

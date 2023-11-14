@@ -20,11 +20,11 @@ from app import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('', views.index),
-    path('tag', views.indexTagged),
-    path('post', views.post),
-    path('login', views.login),
-    path('register', views.register),
-    path('create', views.addPost),
-    path('profile', views.profile),
+    path('', views.index, name='index'),
+    path('tag', views.indexTagged, name='tag'),
+    path('post/<int:post_id>', views.post, name='post'),
+    path('login', views.login, name='login'),
+    path('register', views.register, name='register'),
+    path('create', views.addPost, name='create'),
+    path('profile', views.profile, name='profile'),
 ]

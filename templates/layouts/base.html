@@ -20,10 +20,10 @@
                         <img height="40px" src="{% static 'img/logo.png' %}">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Posts</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><b class="hot-btn">Create post!</b></a>
+                        <a class="nav-link" href="{% url 'create' %}"><b class="hot-btn">Create post!</b></a>
                     </li>
                 </ul>
                 <form class="mt-3 mt-lg-0 ms-lg-3 d-flex align-items-center">
@@ -37,8 +37,8 @@
             <div class="order-lg-3 d-flex align-items-center">
                 <div>
                     <div class="me-3 d-flex align-items-center">
-                        <a href="#" class="btn btn-outline-primary shadow-sm me-1">Sign In</a>
-                        <a href="#" class="btn btn-primary d-none d-md-block">Sign Up</a>
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary shadow-sm me-1">Sign In</a>
+                        <a href="{% url 'register' %}" class="btn btn-primary d-none d-md-block">Sign Up</a>
                     </div>
                 </div>
             </div>
