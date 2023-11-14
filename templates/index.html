@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="static/css/indexstyle.css" rel="stylesheet">
+    <link href="{% static 'css/indexstyle.css' %}" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -14,7 +16,7 @@
             <div class="ms-3 collapse navbar-collapse" id="navbar-default">
                 <ul class="navbar-nav">
                     <li class="nav-item ms-2 me-5">
-                        <img height="40px" src="static/img/logo.png">
+                        <img height="40px" src="{% static 'img/logo.png' %}">
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Posts</a>
@@ -63,7 +65,7 @@
                         <div class="col-md-9">
                             <div class="pl-3 pt-3 post row container-fluid">
                                 <div class="col-auto">
-                                    <img class="profile-picture" src="static/img/profile_picture_tmp.svg">
+                                    <img class="profile-picture" src="{% static 'img/profile_picture_tmp.svg' %}">
                                 </div>
                                 <div class="col">
                                     <div class="post-text">
