@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Post</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="css/registerstyle.css" rel="stylesheet">
+    <link href="static/css/poststyle.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -14,7 +14,7 @@
             <div class="ms-3 collapse navbar-collapse" id="navbar-default">
                 <ul class="navbar-nav">
                     <li class="nav-item ms-2 me-5">
-                        <img height="40px" src="img/logo.png">
+                        <img height="40px" src="static/img/logo.png">
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">Posts</a>
@@ -50,41 +50,84 @@
         <!-- Content -->
         <section class="mt-3 flex-grow-1 main-content">
             <div class="container">
-                <div class="row">
-                    <nav class="p-0 d-flex flex-nowrap register">
-                        <p class="fs-3">Register</p>
-                    </nav>
-                </div>
-                <div class="mt-3 row">
-                    <!-- Form -->
-                    <div class="ps-5 col-md-9">
-                        <form class="form row col-lg-4">
-                            <div class="row alert alert-danger" role="alert">
-                                Login alreay exists!
+                <div class="mt-4 row">
+                    <!-- Post -->
+                    <div class="pe-3 col-md-9">
+                        <div class="pl-3 pt-3 post row container-fluid">
+                            <div class="col-auto">
+                                <img class="profile-picture" src="static/img/profile_picture_tmp.svg">
                             </div>
-                            <div class="pe-0 mb-3 row">
-                                <p class="row ps-1 mb-2 fs-5">Login</p>
-                                <input class="row p-2 fs-6" type="text" placeholder="awesome@mail.ru">
+                            <div class="col">
+                                <div class="post-text">
+                                    <h4 class="text-center mb-4">Title</h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa. Tincidunt dui ut ornare lectus sit amet est placerat in. In metus vulputate eu scelerisque felis imperdiet proin fermentum. Nunc aliquet bibendum enim facilisis gravida neque convallis a
+                                    </p>
+                                </div>
+                                <div class="post-additions">
+                                    <div class="row">
+                                        <h8 class="mb-3 col-auto">Tags:</h8>
+                                        <div class="col post-tags">
+                                            <a href="#">C++</a>
+                                            <a href="#">Perl</a>
+                                            <a href="#">Java</a>
+                                            <a href="#">C</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="pe-0 mb-3 row">
-                                <p class="row ps-1 mb-2 fs-5">Name</p>
-                                <input class="row p-2 fs-6" type="text" placeholder="Awesome443">
+                            <div class="p-0 pt-5 row post-text">
+                                <h4 class="text-center mb-1">Comments</h4>
                             </div>
-                            <div class="pe-0 mb-3 row">
-                                <p class="row ps-1 mb-2 fs-5">Password</p>
-                                <input class="row p-2 fs-6" type="password">
-                                <div id="emailHelp" class="ps-0 row form-text">Your password must be at least 8 characters</div>
+                        </div>
+                        <div class="pt-3 mb-5 comment row container">
+                            <form class="">
+                                <div class="mb-3 row">
+                                    <textarea class="col fs-6 post-text" id="text" placeholder="Your comment"></textarea>
+                                </div>
+                                <p class="text-end mb-0">
+                                    <input class="px-3 py-1 text-center col fs-5 btn-submit" type="submit" value="Comment!">
+                                </p>
+                            </form>
+                        </div>
+                        <div class="pl-3 pt-3 comment row container-fluid">
+                            <div class="col-auto">
+                                <img class="profile-picture" src="static/img/profile_picture_tmp.svg">
                             </div>
-                            <div class="pe-0 mb-3 row">
-                                <p class="row ps-1 mb-2 fs-5">Repeat password</p>
-                                <input class="row p-2 fs-6" type="password">
+                            <div class="col">
+                                <div class="post-text row">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa. Tincidunt dui ut ornare lectus sit amet est placerat in. In metus vulputate eu scelerisque felis imperdiet proin fermentum. Nunc aliquet bibendum enim facilisis gravida neque convallis a
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <input class="form-check-input correct-check col-auto" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+                                    <p class="col">
+                                        Correct answer
+                                    </p>
+                                </div>
                             </div>
-                            <p class="pe-4 text-end">
-                                <input class="px-4 py-2 text-center col fs-5 btn-submit" type="submit" value="Login">
-                            </p>
-                        </form>
+                        </div>
+                        <div class="pl-3 pt-3 comment row container-fluid">
+                            <div class="col-auto">
+                                <img class="profile-picture" src="static/img/profile_picture_tmp.svg">
+                            </div>
+                            <div class="col">
+                                <div class="post-text">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam quam nulla porttitor massa. Tincidunt dui ut ornare lectus sit amet est placerat in. In metus vulputate eu scelerisque felis imperdiet proin fermentum. Nunc aliquet bibendum enim facilisis gravida neque convallis a
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <input class="form-check-input correct-check col-auto" type="checkbox" id="checkboxNoLabel" value="" aria-label="..." />
+                                    <p class="col">
+                                        Correct answer
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /Form -->
+                    <!-- /Post -->
 
                     <!-- Sidebar -->
                     <aside class="col-sm-3">
