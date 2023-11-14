@@ -2,6 +2,7 @@
 
 /* Content */
 .post-tag > label {
+    padding: 6px 10px;
     color: var(--main-orange);
 }
 
