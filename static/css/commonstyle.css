@@ -11,6 +11,10 @@ body {
     overflow-x: hidden;
 }
 
+.header {
+    color: var(--main-orange);
+}
+
 .search {
     width: 400px;
 }

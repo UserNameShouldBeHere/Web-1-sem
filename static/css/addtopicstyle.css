@@ -1,9 +1,5 @@
 @import "commonstyle.css";
 
-.createpost {
-    color: var(--main-orange);
-}
-
 .form {
     padding-right: 15px;
 }
