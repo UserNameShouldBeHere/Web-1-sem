@@ -44,6 +44,31 @@ body {
 }
 /* /Header */
 
+.evaluat {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+.evaluat-up {
+    color: #059d00;
+}
+
+.evaluat-down {
+    color: #f35500;
+}
+
+.evaluat-up:hover {
+    color: #046f00;
+}
+
+.evaluat-down:hover {
+    color: #9d3700;
+}
+
 /* Sidebar */
 .sidebar {
     background-color: #fff;
