@@ -67,22 +67,19 @@
     color: var(--dark-orange);
 }
 
-.pagenumber > input:checked + label {
-    /* color: #f5f5f5;
-    background-color: #ffa332; */
+/* .pagenumber > input:checked + label {
     border-bottom: 4px solid var(--main-orange);
-}
+} */
 
-.pagenumber > label {
-    /* border: 1px solid #727272; */
+/* .pagenumber > li > a {
     padding: 3px 12px;
     display: inline-block;
     text-align: center;
     color: black;
     cursor: pointer;
-}
+} */
 
-.pagenumber > label:hover {
+/* .pagenumber > label:hover {
     color: #868686;
-}
+} */
 /* /Content */

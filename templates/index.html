@@ -55,31 +55,8 @@
         <!-- /Sidebar -->
     </div>
 
-    <!-- Pages -->
-    <div class="pt-1 row">
-        <nav class="d-flex flex-nowrap pagenumber">
-            <input class="btn-check" id="leftpage" name="pagenumber" type="radio">
-            <label class="fs-5 tab-btn">&laquo;</label>
-            
-            <input class="btn-check" id="pagenumber1" name="pagenumber" type="radio" checked>
-            <label class="fs-5 tab-btn" for="pagenumber1">1</label>
-            
-            <input class="btn-check" id="pagenumber2" name="pagenumber" type="radio">
-            <label class="fs-5 tab-btn" for="pagenumber2">2</label>
-
-            <input class="btn-check" id="pagenumber3" name="pagenumber" type="radio">
-            <label class="fs-5 tab-btn" for="pagenumber3">3</label>
-            
-            <input class="btn-check" id="pagenumber4" name="pagenumber" type="radio">
-            <label class="fs-5 tab-btn" for="pagenumber4">4</label>
-            
-            <input class="btn-check" id="pagenumber5" name="pagenumber" type="radio">
-            <label class="fs-5 tab-btn" for="pagenumber5">5</label>
-            
-            <input class="btn-check" id="rightpage" name="pagenumber" type="radio">
-            <label class="fs-5 tab-btn">&raquo;</label>
-        </nav>
-    </div>
-    <!-- /Pages -->
+    <!-- Paginator -->
+    {% include 'components/paginator.html' with items=posts %}
+    <!-- /Paginator -->
 </div>
 {% endblock %}

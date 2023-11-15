@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="pt-1 row">
+    <nav class="d-flex flex-nowrap">
+        <ul class="list-group list-group-horizontal paginator">
+            <li class="{% if not items.has_previous %} disabled {% endif %} p-0 list-group-item">
+                <a class="m-0 fs-5" href="{% if items.has_previous %} ?page={{ items.previous_page_number }} {% else %} # {% endif %}">&laquo;</a>
+            </li>
+            {% for page in items.paginator.page_range %}
+                {% if items.number == page %}
+                <li class="list-group-item p-0 active-page">
+                    <a class="m-0 fs-5" href="#">{{ page }}</a>
+                </li>
+                {% elif page >= items.number|add:-2 and page <= items.number|add:2 %}
+                <li class="list-group-item p-0">
+                    <a class="m-0 fs-5" href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            <li class="{% if not items.has_next %} disabled {% endif %} p-0 list-group-item">
+                <a class="m-0 fs-5" href="{% if items.has_next %} ?page={{ items.next_page_number }} {% else %} # {% endif %}">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
+</div>

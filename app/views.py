@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 
 POSTS = [
     {
         'id': i,
         'title': f'Post N{i}',
         'text': 'ara ARA '*5*i
-    } for i in range(0,8)
+    } for i in range(0,35)
 ]
 
 SIDEBAR = [
@@ -61,13 +62,19 @@ SIDEBAR = [
     }
 ]
 
+def paginate(objects, page, per_page=5):
+    paginator = Paginator(POSTS, per_page)
+    return paginator.page(page)
+
 # Create your views here.
 def index(request):
-    data = {'posts': POSTS, 'sidebar': SIDEBAR[0]}
+    page = request.GET.get('page', 1)
+    data = {'posts': paginate(POSTS, page), 'sidebar': SIDEBAR[0]}
     return render(request, "index.html", data)
 
 def indexTagged(request, tag_name):
-    data = {'tag': tag_name, 'posts': POSTS, 'sidebar': SIDEBAR[0]}
+    page = request.GET.get('page', 1)
+    data = {'tag': tag_name, 'posts': paginate(POSTS, page), 'sidebar': SIDEBAR[0]}
     return render(request, "index-tagged.html", data)
 
 def post(request, post_id):
