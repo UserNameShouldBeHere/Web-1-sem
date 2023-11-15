@@ -13,6 +13,7 @@
     </nav>
     <!-- Post -->
     <div class="pe-3 col-md-9">
+        {% if post is not None %}
         <div class="pl-3 pt-3 post row container-fluid">
             <div class="col-auto">
                 <img class="profile-picture" src="{% static 'img/profile_picture_tmp.svg' %}">
@@ -78,6 +79,15 @@
                 </div>
             </div>
         </div>
+        {% else %}
+        <!-- <div class="mt-3 row">
+            <div class="col-md-9">
+                <div class="col-auto row alert alert-danger" role="alert">
+                    Post doesn't exists!
+                </div>
+            </div>
+        </div> -->
+        {% endif %}
     </div>
     <!-- /Post -->
 

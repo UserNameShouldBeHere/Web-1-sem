@@ -84,6 +84,10 @@ def indexTagged(request, tag_name):
     return render(request, "index-tagged.html", data)
 
 def post(request, post_id):
+    if post_id >= len(POSTS) or post_id < 0:
+        request.status_code = 404
+        return render(request, "not-found.html")
+
     data = {'post': POSTS[post_id], 'sidebar': SIDEBAR[0]}
     return render(request, "post.html", data)
 
