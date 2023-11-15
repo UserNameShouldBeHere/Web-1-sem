@@ -52,6 +52,10 @@
     margin-bottom: 20px;
 }
 
+.comment-text {
+    min-height: 30px;
+}
+
 .correct-check {
     padding: 8px;
 }

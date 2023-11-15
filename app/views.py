@@ -64,7 +64,13 @@ SIDEBAR = [
 
 def paginate(objects, page, per_page=5):
     paginator = Paginator(POSTS, per_page)
-    return paginator.page(page)
+    
+    try:
+        page = paginator.page(page)
+    except Exception:
+        page = paginator.page(1)
+
+    return page
 
 # Create your views here.
 def index(request):
