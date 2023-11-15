@@ -21,7 +21,7 @@ from app import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('tag', views.indexTagged, name='tag'),
+    path('tag/<str:tag_name>', views.indexTagged, name='tag'),
     path('post/<int:post_id>', views.post, name='post'),
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),

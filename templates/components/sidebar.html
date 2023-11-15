@@ -4,25 +4,18 @@
     <div class="mb-4 sidebar">
         <h4 class="mb-3">Popular tags</h4>
         <ul class="popular-tags">
-            <li><a href="{% url 'tag' %}">Perl</a></li>
-            <li><a href="{% url 'tag' %}">C++</a></li>
-            <li><a href="{% url 'tag' %}">Python</a></li>
-            <li><a href="{% url 'tag' %}">Go</a></li>
-            <li><a href="{% url 'tag' %}">Rust</a></li>
-            <li><a href="{% url 'tag' %}">C#</a></li>
-            <li><a href="{% url 'tag' %}">Java</a></li>
-            <li><a href="{% url 'tag' %}">SQL</a></li>
-            <li><a href="{% url 'tag' %}">Kotlin</a></li>
+            {% for tag in sidebar.popular_tags %}
+            <li><a href="{% url 'tag' tag_name=tag.name %}">{{ tag.name }}</a></li>
+            {% endfor %}
         </ul>
     </div>
 
     <div class="mb-4 sidebar">
         <h4 class="mb-3">Best members</h4>
         <ul class="members">
-            <li><a href="{% url 'index' %}">Nagibator228</a></li>
-            <li><a href="{% url 'index' %}">UltraMegaCringe</a></li>
-            <li><a href="{% url 'index' %}">Abobus</a></li>
-            <li><a href="{% url 'index' %}">Aristotel</a></li>
+            {% for member in sidebar.top_members %}
+            <li><a href="{% url 'index' %}">{{ member.name }}</a></li>
+            {% endfor %}
         </ul>
     </div>
 </aside>
