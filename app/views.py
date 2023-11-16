@@ -1,12 +1,19 @@
 from django.shortcuts import render
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, InvalidPage, PageNotAnInteger, EmptyPage
 
 POSTS = [
     {
         'id': i,
         'title': f'Post N{i}',
         'text': 'ara ARA '*5*i
-    } for i in range(0,35)
+    } for i in range(1,35)
+]
+
+COMMENTS = [
+    {
+        'id': i,
+        'text': 'pam PARAM '*5*i
+    } for i in range(1,20)
 ]
 
 SIDEBAR = [
@@ -62,25 +69,24 @@ SIDEBAR = [
     }
 ]
 
-def paginate(objects, page, per_page=5):
-    paginator = Paginator(POSTS, per_page)
+def paginate(objects, request, per_page=5):
+    page = request.GET.get('page', 1)
+    paginator = Paginator(objects, per_page)
     
     try:
         page = paginator.page(page)
-    except Exception:
+    except (InvalidPage, PageNotAnInteger, EmptyPage) as e:
         page = paginator.page(1)
 
     return page
 
 # Create your views here.
 def index(request):
-    page = request.GET.get('page', 1)
-    data = {'posts': paginate(POSTS, page), 'sidebar': SIDEBAR[0]}
+    data = {'posts': paginate(POSTS, request), 'sidebar': SIDEBAR[0]}
     return render(request, "index.html", data)
 
 def indexTagged(request, tag_name):
-    page = request.GET.get('page', 1)
-    data = {'tag': tag_name, 'posts': paginate(POSTS, page), 'sidebar': SIDEBAR[0]}
+    data = {'tag': tag_name, 'posts': paginate(POSTS, request), 'sidebar': SIDEBAR[0]}
     return render(request, "index-tagged.html", data)
 
 def post(request, post_id):
@@ -89,7 +95,7 @@ def post(request, post_id):
         data = {'message': '404 ERROR - POST NOT FOUND'}
         return render(request, "error.html", data)
 
-    data = {'post': POSTS[post_id], 'sidebar': SIDEBAR[0]}
+    data = {'post': POSTS[post_id], 'comments': paginate(COMMENTS, request, 10), 'sidebar': SIDEBAR[0]}
     return render(request, "post.html", data)
 
 def login(request):
