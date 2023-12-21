@@ -1,20 +1,43 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, InvalidPage, PageNotAnInteger, EmptyPage
+from random import randint
 
 POSTS = [
     {
         'id': i,
-        'title': f'Post N{i}',
-        'text': 'ara ARA '*5*i
-    } for i in range(1,35)
+        'title': f'Post N{(i + 1)}',
+        'text': 'ara ARA '*5*(i + 1),
+        'rating': randint(-50, 50),
+        'tags': [
+            {
+                'id': 1,
+                'name': 'C++'
+            },
+            {
+                'id': 4,
+                'name': 'Abobus'
+            },
+            {
+                'id': 3,
+                'name': 'Python'
+            }
+        ],
+        'comments': [
+            {
+                'id': (i + 1),
+                'text': 'pam PARAM '*5*(i + 1),
+                'rating': randint(0, 5)
+            } for i in range(0,20)
+        ]
+    } for i in range(0,35)
 ]
 
-COMMENTS = [
-    {
-        'id': i,
-        'text': 'pam PARAM '*5*i
-    } for i in range(1,20)
-]
+# COMMENTS = [
+#     {
+#         'id': i,
+#         'text': 'pam PARAM '*5*i
+#     } for i in range(1,20)
+# ]
 
 SIDEBAR = [
     {
@@ -95,7 +118,7 @@ def post(request, post_id):
         data = {'message': '404 ERROR - POST NOT FOUND'}
         return render(request, "error.html", data)
 
-    data = {'post': POSTS[post_id], 'comments': paginate(COMMENTS, request, 10), 'sidebar': SIDEBAR[0]}
+    data = {'post': POSTS[post_id], 'comments': paginate(POSTS[post_id]['comments'], request, 10), 'sidebar': SIDEBAR[0]}
     return render(request, "post.html", data)
 
 def login(request):
