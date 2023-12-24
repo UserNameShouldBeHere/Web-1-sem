@@ -2,26 +2,26 @@
 
 <div class="pl-3 pt-3 post row container-fluid">
     <div class="col-auto">
-        <img class="profile-picture" src="{% static 'img/profile_picture_tmp.svg' %}">
+        <img class="profile-picture" src="{% static 'img/profile_picture_tmp.svg' %}" title="{{ post.data.author.user.username }}">
         <div class="text-center mt-2">
             <input class="p-0 m-0 fs-4 evaluat evaluat-up" type="button" value="+">
-            <p class="p-0 m-0">{{ post.rating }}</p>
+            <p class="p-0 m-0">{{ post.data.rating }}</p>
             <input class="p-0 m-0 fs-4 evaluat evaluat-down" type="button" value="-">
         </div>
     </div>
     <div class="col">
         <div class="post-text">
-            <h4 class="text-center mb-4"><a class="text-decoration-none text-black" href="{% url 'post' post_id=post.id %}">{{ post.title }}</a></h4>
+            <h4 class="text-center mb-4"><a class="text-decoration-none text-black" href="{% url 'post' post_id=post.data.id %}">{{ post.data.title }}</a></h4>
             <p>
-                {{ post.text }}    
+                {{ post.data.text }}    
             </p>
         </div>
         <div class="post-additions">
             <div class="row">
                 <h8 class="mb-3 col-auto">Tags:</h8>
                 <div class="col post-tags">
-                    {% for tag in post.tags %}
-                    <a href="#">{{ tag.name }}</a>
+                    {% for tag in post.data.tags.all %}
+                    <a href="{% url 'tag' tag_name=tag.name %}">{{ tag.name }}</a>
                     {% endfor %}
                     <!-- <a href="#">C++</a>
                     <a href="#">Perl</a>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="row post-links">
-                <a href="#">Comments</a>
+                <a href="{% url 'post' post_id=post.data.id %}">Comments ({{ post.comments|length }})</a>
             </div>
         </div>
     </div>

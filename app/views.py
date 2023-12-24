@@ -1,96 +1,43 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, InvalidPage, PageNotAnInteger, EmptyPage
 from random import randint
+import json
+import time
 
-POSTS = [
-    {
-        'id': i,
-        'title': f'Post N{(i + 1)}',
-        'text': 'ara ARA '*5*(i + 1),
-        'rating': randint(-50, 50),
-        'tags': [
-            {
-                'id': 1,
-                'name': 'C++'
-            },
-            {
-                'id': 4,
-                'name': 'Abobus'
-            },
-            {
-                'id': 3,
-                'name': 'Python'
-            }
-        ],
-        'comments': [
-            {
-                'id': (i + 1),
-                'text': 'pam PARAM '*5*(i + 1),
-                'rating': randint(0, 5)
-            } for i in range(0,20)
-        ]
-    } for i in range(0,35)
-]
+from app.models import Post, Comment, Tag, Profile
 
-# COMMENTS = [
-#     {
-#         'id': i,
-#         'text': 'pam PARAM '*5*i
-#     } for i in range(1,20)
-# ]
+def get_comments_by_post(post_id):
+    return Comment.objects.get_by_post(post_id)
 
-SIDEBAR = [
-    {
-        'popular_tags': [
-            {
-                'id': 1,
-                'name': 'C++'
-            },
-            {
-                'id': 2,
-                'name': 'Brainfuck'
-            },
-            {
-                'id': 3,
-                'name': 'Python'
-            },
-            {
-                'id': 4,
-                'name': 'Rust'
-            },
-            {
-                'id': 5,
-                'name': 'Kotlin'
-            },
-            {
-                'id': 6,
-                'name': 'Java'
-            }
-        ],
-        'top_members': [
-            {
-                'id': 1,
-                'name': 'me'
-            },
-            {
-                'id': 2,
-                'name': 'Nagibator228'
-            },
-            {
-                'id': 3,
-                'name': 'UltraMegaCringe'
-            },
-            {
-                'id': 4,
-                'name': 'Abobus'
-            },
-            {
-                'id': 5,
-                'name': 'Aristotel'
-            }
-        ]
+def get_all_posts():
+    posts_arr = Post.objects.sort_by_date()
+    posts = []
+    for post in posts_arr:
+        # posts.append({'id': post.id, 'author': post.author, 'rating': post.rating, 'title': post.title, 'text': post.text, 'tags': post.tags.all(), 'comments': get_comments_by_post(post.id)})
+        posts.append({'data': post, 'comments': get_comments_by_post(post.id)})
+
+    return posts
+
+def get_hot_posts():
+    pass
+
+def get_tagged_posts(tag):
+    posts_arr = Post.objects.get_by_tag(tag)
+    posts = []
+    for post in posts_arr:
+        posts.append({'data': post, 'comments': get_comments_by_post(post.id)})
+
+    return posts
+
+def get_single_post(post_id):
+    post = Post.objects.get_by_id(post_id)
+    return {'data': post}
+
+def get_sidebar():
+    return {
+        'popular_tags': Tag.objects.get_popular_tags(),
+        'top_members': Profile.objects.get_popular_members()
     }
-]
 
 def paginate(objects, request, per_page=5):
     page = request.GET.get('page', 1)
@@ -105,34 +52,34 @@ def paginate(objects, request, per_page=5):
 
 # Create your views here.
 def index(request):
-    data = {'posts': paginate(POSTS, request), 'sidebar': SIDEBAR[0]}
+    data = {'posts': paginate(get_all_posts(), request), 'sidebar': get_sidebar()}
     return render(request, "index.html", data)
 
 def indexTagged(request, tag_name):
-    data = {'tag': tag_name, 'posts': paginate(POSTS, request), 'sidebar': SIDEBAR[0]}
+    data = {'tag': tag_name, 'posts': paginate(get_tagged_posts(tag_name), request), 'sidebar': get_sidebar()}
     return render(request, "index-tagged.html", data)
 
 def post(request, post_id):
-    if post_id >= len(POSTS) or post_id < 0:
+    if post_id >= len(get_all_posts()) or post_id < 0:
         request.status_code = 404
         data = {'message': '404 ERROR - POST NOT FOUND'}
         return render(request, "error.html", data)
 
-    data = {'post': POSTS[post_id], 'comments': paginate(POSTS[post_id]['comments'], request, 10), 'sidebar': SIDEBAR[0]}
+    data = {'post': get_single_post(post_id), 'comments': paginate(get_comments_by_post(post_id), request, per_page=10), 'sidebar': get_sidebar()}
     return render(request, "post.html", data)
 
 def login(request):
-    data = {'sidebar': SIDEBAR[0]}
+    data = {'sidebar': get_sidebar()}
     return render(request, "login.html", data)
 
 def register(request):
-    data = {'sidebar': SIDEBAR[0]}
+    data = {'sidebar': get_sidebar()}
     return render(request, "register.html", data)
 
 def addPost(request):
-    data = {'sidebar': SIDEBAR[0]}
+    data = {'sidebar': get_sidebar()}
     return render(request, "add-post.html", data)
 
 def profile(request):
-    data = {'sidebar': SIDEBAR[0]}
+    data = {'sidebar': get_sidebar()}
     return render(request, "profile.html", data)
