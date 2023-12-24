@@ -50,7 +50,7 @@ class Command(BaseCommand):
         tags_data = []
         for post in Post.objects.all():
             tags = []
-            for i in range(randint(1, 3)):
+            for _ in range(randint(1, 3)):
                 new_tag = fake.random_int(min=0, max=tags_count - 1) + 1
                 while (post.id, new_tag) in tags:
                     new_tag = fake.random_int(min=0, max=tags_count - 1) + 1
@@ -58,7 +58,7 @@ class Command(BaseCommand):
             tags_data += tags
 
             liked_by = []
-            for i in range(post.rating):
+            for _ in range(post.rating):
                 new_liked_user = fake.random_int(min=0, max=users_count - 1) + 1
                 while (post.id, new_liked_user) in liked_by:
                     new_liked_user = fake.random_int(min=0, max=users_count - 1) + 1
@@ -70,3 +70,16 @@ class Command(BaseCommand):
 
         Post.liked_by.through.objects.bulk_create([Post.liked_by.through(post_id=post_id, profile_id=profile_id) for post_id, profile_id in liked_data], batch_size=batch)
         print("post_liked_by filled")
+
+        liked_data = []
+        for comment in Comment.objects.all():
+            liked_by = []
+            for _ in range(comment.rating):
+                new_liked_user = fake.random_int(min=0, max=users_count - 1) + 1
+                while (comment.id, new_liked_user) in liked_by:
+                    new_liked_user = fake.random_int(min=0, max=users_count - 1) + 1
+                liked_by.append((comment.id, new_liked_user))
+            liked_data += liked_by
+        
+        Comment.liked_by.through.objects.bulk_create([Comment.liked_by.through(comment_id=comment_id, profile_id=profile_id) for comment_id, profile_id in liked_data], batch_size=batch)
+        print("comment_liked_by filled")

@@ -41,8 +41,8 @@ class Post(models.Model):
     tags = models.ManyToManyField("Tag", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
-    liked_by = models.ManyToManyField("Profile", blank=True, related_name="liked_by")
-    disliked_by = models.ManyToManyField("Profile", blank=True, related_name="disliked_by")
+    liked_by = models.ManyToManyField("Profile", blank=True, related_name="post_liked_by")
+    disliked_by = models.ManyToManyField("Profile", blank=True, related_name="post_disliked_by")
 
     objects = PostManager()
 
@@ -56,5 +56,7 @@ class Comment(models.Model):
     author = models.ForeignKey("Profile", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
+    liked_by = models.ManyToManyField("Profile", blank=True, related_name="comment_liked_by")
+    disliked_by = models.ManyToManyField("Profile", blank=True, related_name="comment_disliked_by")
 
     objects = CommentManager()
