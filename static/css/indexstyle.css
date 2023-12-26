@@ -20,6 +20,12 @@
     color: #6d6d6d;
 }
 
+.poststype > a {
+    text-decoration: underline;
+    cursor: pointer;
+    color: black;
+}
+
 .post {
     background-color: #fff;
     padding: 15px;

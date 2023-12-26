@@ -4,6 +4,7 @@ from app import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('hot', views.indexhot, name='indexhot'),
     path('tag/<str:tag_name>', views.indexTagged, name='tag'),
     path('post/<int:post_id>', views.post, name='post'),
     path('login', views.login, name='login'),

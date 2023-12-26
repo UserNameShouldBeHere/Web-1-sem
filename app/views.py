@@ -19,7 +19,13 @@ def get_all_posts():
     return posts
 
 def get_hot_posts():
-    pass
+    posts_arr = Post.objects.sort_by_hot()
+    posts = []
+    for post in posts_arr:
+        # posts.append({'id': post.id, 'author': post.author, 'rating': post.rating, 'title': post.title, 'text': post.text, 'tags': post.tags.all(), 'comments': get_comments_by_post(post.id)})
+        posts.append({'data': post, 'comments': get_comments_by_post(post.id)})
+
+    return posts
 
 def get_tagged_posts(tag):
     posts_arr = Post.objects.get_by_tag(tag)
@@ -53,6 +59,10 @@ def paginate(objects, request, per_page=5):
 # Create your views here.
 def index(request):
     data = {'posts': paginate(get_all_posts(), request), 'sidebar': get_sidebar()}
+    return render(request, "index.html", data)
+
+def indexhot(request):
+    data = {'posts': paginate(get_hot_posts(), request), 'sidebar': get_sidebar()}
     return render(request, "index.html", data)
 
 def indexTagged(request, tag_name):
