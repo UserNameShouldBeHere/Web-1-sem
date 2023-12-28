@@ -48,16 +48,46 @@
                 <h4 class="text-center mb-1">Comments</h4>
             </div>
         </div>
+
+        {% if user.id != None %}
         <div class="pt-3 mb-5 comment row container">
-            <form class="">
-                <div class="mb-3 row">
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="row alert alert-danger" role="alert">
+                            {{ error|escape }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                        <div class="row alert alert-danger" role="alert">
+                            {{ error|escape }}
+                        </div>
+                {% endfor %}
+                {% endif %}
+
+
+                {% for field in form %}
+                    <div class="fieldWrapper mb-3 row">
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <p class="mb-0 text-end">
+                    <input class="px-3 py-1 text-center col fs-5 btn-submit" type="submit" value="Comment!">
+                </p>
+                <!-- <div class="mb-3 row">
                     <textarea class="col fs-6 comment-text" id="text" placeholder="Your comment"></textarea>
                 </div>
                 <p class="text-end mb-0">
                     <input class="px-3 py-1 text-center col fs-5 btn-submit" type="submit" value="Comment!">
-                </p>
+                </p> -->
             </form>
         </div>
+        {% endif %}
+
         {% for comment in comments %}
         <div class="pl-3 pt-3 comment row container-fluid">
             <div class="col-auto">

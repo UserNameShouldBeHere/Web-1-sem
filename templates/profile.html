@@ -16,25 +16,26 @@
         <div class="col-md-9">
             <form class="form row">
                 <div class="mb-3 row">
-                    <p class="col-sm-1 fs-5 me-4">Nick</p>
-                    <input class="col-sm-3 fs-6" type="text" value="Nagibator228">
+                    <p class="col-sm-2 fs-5 me-4">Username</p>
+                    <input class="col-sm-3 fs-6" type="text" value="{{ user.username }}">
+
                     <p class="text-end col p-0 m-0">
                         <input class="px-5 py-2 me-5 text-center fs-5 btn-submit" type="submit" value="Save">
                     </p>
                 </div>
                 <div class="mb-3 row">
-                    <p class="col-sm-1 fs-5 me-4">Login</p>
-                    <input class="col-sm-3 fs-6" type="text" value="nagibator228">
+                    <p class="col-sm-2 fs-5 me-4">Email</p>
+                    <input class="col-sm-3 fs-6" type="text" value="{{ user.email }}">
                 </div>
                 <div class="mb-3 row">
-                    <p class="col-sm-1 fs-5 me-4">Email</p>
-                    <input class="col-sm-3 fs-6" type="text" value="nagibator@mail.ru">
+                    <p class="col-sm-2 fs-5 me-4">New password</p>
+                    <input class="col-sm-3 fs-6" type="password">
                 </div>
                 <div class="mb-3 row">
-                    <p class="col-sm-1 fs-5 me-4">Icon</p>
+                    <p class="col-sm-2 fs-5 me-4">Icon</p>
                     <div class="col-sm-3">
                         <img class="row mb-3 fs-6 profile-picture" src="{% static 'img/profile_picture_tmp.svg' %}">
-                        <input class="row" type="file" value="nagibator@mail.ru">
+                        <input class="row" type="file">
                     </div>
                 </div>
             </form>

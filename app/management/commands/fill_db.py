@@ -21,7 +21,10 @@ class Command(BaseCommand):
 
         batch = 10000
 
-        User.objects.bulk_create([User(username=fake.user_name() + str(randint(1, 100)) + str(randint(1, 100))) for _ in range(ratio)], batch_size=batch)
+        User.objects.bulk_create([User(
+            username=fake.user_name() + str(randint(1, 100)) + str(randint(1, 100)),
+            email=fake.user_name() + '@mail.ru'
+            ) for _ in range(ratio)], batch_size=batch)
         print("users filled")
 
         Profile.objects.bulk_create([Profile(user_id=_ + 1) for _ in range(ratio)], batch_size=batch)
@@ -34,7 +37,7 @@ class Command(BaseCommand):
             title=fake.job(),
             text=fake.paragraph(nb_sentences=5),
             author=Profile.objects.get(id=fake.random_int(min=0, max=users_count - 1) + 1),
-            rating=fake.random_int(min=0, max=50)
+            rating=fake.random_int(min=0, max=40)
         ) for _ in range(posts_count)], batch_size=batch)
         print("posts filled")
 
@@ -42,7 +45,7 @@ class Command(BaseCommand):
             text=fake.text(max_nb_chars=100),
             post=Post.objects.get(id=fake.random_int(min=0, max=posts_count - 1) + 1),
             author=Profile.objects.get(id=fake.random_int(min=0, max=users_count - 1) + 1),
-            rating=fake.random_int(min=0, max=50)
+            rating=fake.random_int(min=0, max=10)
         ) for _ in range(comments_count)], batch_size=batch)
         print("comments filled")
 

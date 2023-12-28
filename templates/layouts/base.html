@@ -37,8 +37,13 @@
             <div class="order-lg-3 d-flex align-items-center">
                 <div>
                     <div class="me-3 d-flex align-items-center">
+                        {% if user.id == None %}
                         <a href="{% url 'login' %}" class="btn btn-outline-primary shadow-sm me-1">Sign In</a>
                         <a href="{% url 'register' %}" class="btn btn-primary d-none d-md-block">Sign Up</a>
+                        {% else %}
+                        <a href="{% url 'profile' %}" class="btn btn-primary d-none d-md-block me-1">Profile</a>
+                        <a href="{% url 'logout' %}" class="btn btn-outline-primary shadow-sm">Logout</a>
+                        {% endif %}
                     </div>
                     <!-- <div class="me-3 d-flex align-items-center">
                         <a href="{% url 'profile' %}" class="p-0 me-2">

@@ -14,8 +14,35 @@
     <div class="mt-3 row">
         <!-- Form -->
         <div class="ps-5 col-md-9">
-            <form class="form row col-lg-4">
-                <div class="row alert alert-danger" role="alert">
+            <form class="form row col-lg-4" method="post">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="row alert alert-danger" role="alert">
+                            {{ error|escape }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                        <div class="row alert alert-danger" role="alert">
+                            {{ error|escape }}
+                        </div>
+                {% endfor %}
+                {% endif %}
+
+
+                {% for field in form %}
+                    <div class="fieldWrapper pe-0 mb-3 row">
+                        <p class="row ps-1 mb-2 fs-5">{{ field.label_tag }}</p>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <p class="pe-4 text-end">
+                    <input class="px-4 py-2 text-center col fs-5 btn-submit" type="submit" value="Register">
+                </p>
+                <!-- <div class="row alert alert-danger" role="alert">
                     Login alreay exists!
                 </div>
                 <div class="pe-0 mb-3 row">
@@ -37,7 +64,7 @@
                 </div>
                 <p class="pe-4 text-end">
                     <input class="px-4 py-2 text-center col fs-5 btn-submit" type="submit" value="Login">
-                </p>
+                </p> -->
             </form>
         </div>
         <!-- /Form -->

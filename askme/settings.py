@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'askme.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tp_site', 
+        'NAME': 'tp_site_mock', 
         'USER': 'postgres', 
         'PASSWORD': 'root1234',
         'HOST': '127.0.0.1', 

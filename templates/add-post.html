@@ -14,8 +14,8 @@
     <div class="mt-3 row">
         <!-- Form -->
         <div class="pe-3 col-md-9">
-            <form class="form row">
-                <div class="mb-3 row">
+            <form class="form row" method="POST">
+                <!-- <div class="mb-3 row">
                     <p class="col-sm-1 fs-5">Title</p>
                     <input class="col fs-6" type="text" placeholder="Awesome title">
                 </div>
@@ -28,6 +28,34 @@
                     <input class="col fs-6" type="text" placeholder="C++, Java, ...">
                 </div>
                 <p class="text-end">
+                    <input class="px-4 py-2 text-center col fs-5 btn-submit" type="submit" value="Create!">
+                </p> -->
+
+                {% csrf_token %}
+
+                {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="row alert alert-danger" role="alert">
+                            {{ error|escape }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                        <div class="row alert alert-danger" role="alert">
+                            {{ error|escape }}
+                        </div>
+                {% endfor %}
+                {% endif %}
+
+
+                {% for field in form %}
+                    <div class="fieldWrapper mb-3 row">
+                        <p class="col-sm-1 fs-5">{{ field.label_tag }}</p>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <p class="mt-1 text-end">
                     <input class="px-4 py-2 text-center col fs-5 btn-submit" type="submit" value="Create!">
                 </p>
             </form>
